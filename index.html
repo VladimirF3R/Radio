@@ -12,11 +12,12 @@
 		{name:"Радио Звезда",src:"http://stream.radiozvezda.ru:8088/zvezda_128",img:"img/zvezda.gif", freq:95.6},
 		{name:"Детское Радио",src:"http://radio.2kom.ru:8000/detskoe",img:"img/detskoe.gif", freq:0.0},
 		{name:"Монте Карло",src:"http://icecast.radiomontecarlo.cdnvideo.ru/mc.mp3",img:"img/montekarlo.gif",freq:102.1},
-  		{name:"Наше Радио",src:"http://nashe.streamr.ru/nashe-64.mp3",img:"img/nashe.gif",freq:101.7},
+  	{name:"Наше Радио",src:"http://nashe.streamr.ru/nashe-64.mp3",img:"img/nashe.gif",freq:101.7},
 		{name:"Эхо Москвы",src:"http://81.19.85.197/echo.mp3",img:"img/echo.gif",freq:91.2},
 		{name:"Best FM",src:"http://best128.streamr.ru",img:"img/bestfm.gif",freq:100.5},
 		{name:"Карнавал",src:"http://radio.2kom.ru:8000/Karnaval.FM",img:"img/karnaval.gif",freq:0.0}
 	];
+
 	window.addEventListener("load",function(){
 		// Настроим список
 		var list = document.getElementsByTagName("table")[0];
@@ -25,23 +26,23 @@
 			var tr = list.appendChild(document.createElement("tr"));
 			var td =  tr.appendChild(document.createElement("td"));
 			var radioButton = document.createElement("input");
-        		radioButton.setttribute("type","radio");
-        		radioButton.setAttribute("name","radioSelector");
-        		radioButton.setAttribute("value",radioStations[i].src);
-        		if (i==0) radioButton.setAttribute("checked","");
-        		td.appendChild(radioButton);
-			td =  tr.appendChild(document.createElement("td"));
-		        td.appendChild(document.createTextNode(radioStations[i].name));
-      			td =  tr.appendChild(document.createElement("td"));
-        		var img = document.createElement("img");
+			radioButton.setttribute("type","radio");
+			radioButton.setAttribute("name","radioSelector");
+			radioButton.setAttribute("value",radioStations[i].src);
+			if (i==0) radioButton.setAttribute("checked","");
+			td.appendChild(radioButton);
+			td = tr.appendChild(document.createElement("td"));
+			td.appendChild(document.createTextNode(radioStations[i].name));
+			td = tr.appendChild(document.createElement("td"));
+			var img = document.createElement("img");
 			img.setAttribute("src",radioStations[i].img);
- 			img.setAttribute("style","display:none");
-   			td.appendChild(img);
+			img.setAttribute("style","display:none");
+			td.appendChild(img);
 			radioButton.addEventListener("change",selectRadio);			
 		}
-      		selectRadio();
-      		document.getElementById("playerControls").addEventListener("click",PlayerClick);
-      		document.getElementById("avatarChecker").addEventListener("click",AvatarCheckClick);
+    selectRadio();
+    document.getElementById("playerControls").addEventListener("click",PlayerClick);
+    document.getElementById("avatarChecker").addEventListener("click",AvatarCheckClick);
 	});
 
 	function AvatarCheckClick(e)
@@ -63,7 +64,8 @@
     PlayerClick();
 	}
 
-	function PlayerClick(e){
+	function PlayerClick(e)
+	{
     var audio = document.getElementsByTagName("audio")[0];
     var imgPlay = "img/player_play.png";
     var imgPause = "img/player_pause.png";
@@ -86,8 +88,5 @@
   <img id="playerControls" src="Img/player_pause.png"/>
   Показать эмблемы:<input type="checkbox"  id="avatarChecker"/>
 	<audio type="audio/mpeg">К сожалению, Ваш браузер не поддерживает HTML5 (тэг audio)</audio>
-	<table>
-
-  </table>
 </body>
 </html>
