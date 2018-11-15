@@ -1,5 +1,7 @@
 <!doctype html>
 <html>
+<head>
+<meta charset="utf-8">
 <script>
 //audio.pause();
 //audio.play();
@@ -25,7 +27,7 @@
 			var tr = list.appendChild(document.createElement("tr"));
 			var td =  tr.appendChild(document.createElement("td"));
 			var radioButton = document.createElement("input");
-        		radioButton.setttribute("type","radio");
+        		radioButton.setAttribute("type","radio");
         		radioButton.setAttribute("name","radioSelector");
         		radioButton.setAttribute("value",radioStations[i].src);
         		if (i==0) radioButton.setAttribute("checked","");
@@ -82,6 +84,7 @@
 	}
 
 </script>
+</head>
 <body>
   <img id="playerControls" src="Img/player_pause.png"/>
   Показать эмблемы:<input type="checkbox"  id="avatarChecker"/>
