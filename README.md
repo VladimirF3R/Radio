@@ -1,2 +1,2 @@
 # Radio
-Online radio receiver on HTML5
+Simple online radio receiver on HTML5
