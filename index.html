@@ -1,96 +1,95 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<script>
-//audio.pause();
-//audio.play();
-//audio.volume+=0.1;
-//audio.volume-=0.1;
-	var radioStations=[
-		{name:"The arrow",src:"http://media-sov.musicradio.com:80/ArrowMP3",img:"img/the-arrow-uk.png",freq:0.0},
-		{name:"Маяк",src:"http://icecast.vgtrk.cdnvideo.ru/mayakfm_mp3_192kbps",img:"img/mayak.gif",freq:103.4},
-		{name:"Радио книга",src:"http://bookradio.hostingradio.ru:8069/fm",img:"img/book.gif", freq:105.0},
-		{name:"Радио Звезда",src:"http://stream.radiozvezda.ru:8088/zvezda_128",img:"img/zvezda.gif", freq:95.6},
-		{name:"Детское Радио",src:"http://radio.2kom.ru:8000/detskoe",img:"img/detskoe.gif", freq:0.0},
-		{name:"Монте Карло",src:"http://icecast.radiomontecarlo.cdnvideo.ru/mc.mp3",img:"img/montekarlo.gif",freq:102.1},
-  		{name:"Наше Радио",src:"http://nashe.streamr.ru/nashe-64.mp3",img:"img/nashe.gif",freq:101.7},
-		{name:"Эхо Москвы",src:"http://81.19.85.197/echo.mp3",img:"img/echo.gif",freq:91.2},
-		{name:"Best FM",src:"http://best128.streamr.ru",img:"img/bestfm.gif",freq:100.5},
-		{name:"Карнавал",src:"http://radio.2kom.ru:8000/Karnaval.FM",img:"img/karnaval.gif",freq:0.0}
-	];
+    <meta charset="utf-8">
+    <script>
+        //audio.pause();
+        //audio.play();
+        //audio.volume+=0.1;
+        //audio.volume-=0.1;
+        var radioStations = [
+            //{ name: "The arrow", src: "http://media-sov.musicradio.com:80/ArrowMP3", img: "img/the-arrow-uk.png", freq: 0.0 },
+            { name: "All Stations 80s Radio Zoom", src: "http://radio.garden/listen/radio-80s-radio-zoom/bwKxWHaw", loc: "UK, London", freq:0.0},
+            { name: "Маяк", src: "http://icecast.vgtrk.cdnvideo.ru/mayakfm_mp3_192kbps", img: "img/mayak.gif", loc: "RF, Moscow", freq: 103.4 },
+            { name: "Радио книга", src: "http://bookradio.hostingradio.ru:8069/fm", img: "img/book.gif", loc: "RF, Moscow + Volgograd", freq: 105.0 },
+            { name: "Радио Звезда", src: "http://stream.radiozvezda.ru:8088/zvezda_128", img: "img/zvezda.gif", loc: "RF, Moscow",  freq: 95.6 },
+            { name: "Детское Радио", src: "http://radio.2kom.ru:8000/detskoe", img: "img/detskoe.gif", loc: "RF, Moscow",  freq: 0.0 },
+            { name: "Монте Карло", src: "http://icecast.radiomontecarlo.cdnvideo.ru/mc.mp3", img: "img/montekarlo.gif", loc: "RF, Moscow",  freq: 102.1 },
+            { name: "Наше Радио", src: "http://nashe.streamr.ru/nashe-64.mp3", img: "img/nashe.gif", loc: "RF, Moscow",  freq: 101.7 },
+            //{ name: "Эхо Москвы", src: "http://81.19.85.197/echo.mp3", img: "img/echo.gif", loc: "RF, Moscow",  freq: 91.2 },
+            { name: "Best FM", src: "http://best128.streamr.ru", img: "img/bestfm.gif", loc: "RF, Moscow",  freq: 100.5 },
+            { name: "Карнавал", src: "http://radio.2kom.ru:8000/Karnaval.FM", img: "img/karnaval.gif", loc: "RF, Moscow",  freq: 0.0 }
+        ];
 
-	window.addEventListener("load",function(){
-		// Настроим список
-		var list = document.getElementsByTagName("table")[0];
-		for(var i=0;i<radioStations.length;i++)
-		{
-			var tr = list.appendChild(document.createElement("tr"));
-			var td =  tr.appendChild(document.createElement("td"));
-			var radioButton = document.createElement("input");
-        		radioButton.setAttribute("type","radio");
-        		radioButton.setAttribute("name","radioSelector");
-        		radioButton.setAttribute("value",radioStations[i].src);
-        		if (i==0) radioButton.setAttribute("checked","");
-        		td.appendChild(radioButton);
-			td =  tr.appendChild(document.createElement("td"));
-		        td.appendChild(document.createTextNode(radioStations[i].name));
-      			td =  tr.appendChild(document.createElement("td"));
-        		var img = document.createElement("img");
-			img.setAttribute("src",radioStations[i].img);
-			img.setAttribute("style","display:none");
-			td.appendChild(img);
-			radioButton.addEventListener("change",selectRadio);			
-		}
-    selectRadio();
-    document.getElementById("playerControls").addEventListener("click",PlayerClick);
-    document.getElementById("avatarChecker").addEventListener("click",AvatarCheckClick);
-	});
+        window.addEventListener("load", function () {
+            // Настроим список
+            var list = document.getElementsByTagName("table")[0];
+            for (var i = 0; i < radioStations.length; i++) {
+                var tr = list.appendChild(document.createElement("tr"));
+                var td = tr.appendChild(document.createElement("td"));
+                var radioButton = document.createElement("input");
+                radioButton.setAttribute("type", "radio");
+                radioButton.setAttribute("name", "radioSelector");
+                radioButton.setAttribute("value", radioStations[i].src);
+                if (i == 0) radioButton.setAttribute("checked", "");
+                td.appendChild(radioButton);
+                td = tr.appendChild(document.createElement("td"));
+                td.appendChild(document.createTextNode(radioStations[i].name));
+                td = tr.appendChild(document.createElement("td"));
+                var img = document.createElement("img");
+                img.setAttribute("src", radioStations[i].img);
+                img.setAttribute("style", "display:none");
+                td.appendChild(img);
+                radioButton.addEventListener("change", selectRadio);
+            }
+            selectRadio();
+            document.getElementById("playerControls").addEventListener("click", PlayerClick);
+            document.getElementById("avatarChecker").addEventListener("click", AvatarCheckClick);
+        });
 
-	function AvatarCheckClick(e)
-	{
-    		if(e && e.currentTarget) {
-			var list = document.querySelectorAll("tr td img");	
-			for(var i=0;i<list.length;i++) {
-		      		if (e.currentTarget.checked == true) list[i].setAttribute("style","display:inline"); else list[i].setAttribute("style","display:none");
-			}
-		}
-	}
+        function AvatarCheckClick(e) {
+            if (e && e.currentTarget) {
+                var list = document.querySelectorAll("tr td img");
+                for (var i = 0; i < list.length; i++) {
+                    if (e.currentTarget.checked == true) list[i].setAttribute("style", "display:inline"); else list[i].setAttribute("style", "display:none");
+                }
+            }
+        }
 
-	function selectRadio(e)
-	{
-		var audio = document.getElementsByTagName("audio")[0];
-		var src = e && e.currentTarget && e.currentTarget.value || radioStations[0].src;
-		console.log("src = " + src);
-    audio.setAttribute("src",src);
-    PlayerClick();
-	}
+        function selectRadio(e) {
+            var audio = document.getElementsByTagName("audio")[0];
+            var src = e && e.currentTarget && e.currentTarget.value || radioStations[0].src;
+            console.log("src = " + src);
+            audio.setAttribute("src", src);
+            PlayerClick();
+        }
 
-	function PlayerClick(e)
-	{
-    var audio = document.getElementsByTagName("audio")[0];
-    var imgPlay = "img/player_play.png";
-    var imgPause = "img/player_pause.png";
-    if(e && e.currentTarget) 
-		{
-			if (e.currentTarget.getAttribute("src") == imgPause) {
-		  	// Идет проигрывание -> останавливаем
-      	audio.pause();
-				e.currentTarget.setAttribute("src", imgPlay);
-			} else {
-				// Пауза -> запускаем
-      	audio.play();
-				e.currentTarget.setAttribute("src",imgPause);
-			}
-		} else playerControls.setAttribute("src",imgPause);
-	}
+        function PlayerClick(e) {
+            var audio = document.getElementsByTagName("audio")[0];
+            var imgPlay = "img/player_play.png";
+            var imgPause = "img/player_pause.png";
+            if (e && e.currentTarget) {
+                if (e.currentTarget.getAttribute("src") == imgPause) {
+                    // Идет проигрывание -> останавливаем
+                    audio.pause();
+                    e.currentTarget.setAttribute("src", imgPlay);
+                } else {
+                    // Пауза -> запускаем
+                    audio.play();
+                    e.currentTarget.setAttribute("src", imgPause);
+                }
+            } else {
+                audio.play();
+                playerControls.setAttribute("src", imgPause);
+            }
+        }
 
-</script>
+    </script>
 </head>
 <body>
-  	<img id="playerControls" src="Img/player_pause.png"/>
-  	Показать эмблемы: <input type="checkbox"  id="avatarChecker"/>
-	<audio type="audio/mpeg">К сожалению, Ваш браузер не поддерживает HTML5 (тэг audio)</audio>
-	<table></table>
+    <img id="playerControls" src="" />
+    Показать эмблемы: <input type="checkbox" id="avatarChecker" />
+    <audio type="audio/mpeg">К сожалению, Ваш браузер не поддерживает HTML5 (тэг audio)</audio>
+    <table></table>
 </body>
 </html>
