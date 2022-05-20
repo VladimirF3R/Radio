@@ -102,21 +102,22 @@
         }
 
         function selectRadio(e) {
-            
             const src = e && e.currentTarget && e.currentTarget.value || radioStations[0].src;
             audio.setAttribute("src", src);
-            (button.classList.contains("buttonPause"))? audio.pause() : audio.play();
+            if (e) (button.classList.contains("buttonPause"))? audio.play() : audio.pause();
         }
 
         function playerClick(e) {
             const imgPlay = "img/PlayerPlay.png";
             const imgPause = "img/PlayerPause.png";
             if (e) {
+				audio.muted = false;
 				button.classList.toggle("buttonPause");
 				button.classList.toggle("buttonPlay");
+				console.log("click");
                 (button.classList.contains("buttonPlay"))? audio.pause() : audio.play();
             } else {
-				console.log("style - init");
+				audio.muted = false;
                 audio.pause();
 				button.classList.add("buttonPlay");
             }
@@ -151,7 +152,7 @@
     	Show additional info: <input type="checkbox"/>
 	</div>
 	<div>
-    	<audio type="audio/mpeg">Unfortunately, your browser is't compatible with HTML5 (tag audio)</audio>
+    	<audio type="audio/mpeg" muted autoplay>Unfortunately, your browser is't compatible with HTML5 (tag audio)</audio>
     	<table></table>
 	</div>
 </body>
